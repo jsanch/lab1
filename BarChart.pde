@@ -24,7 +24,7 @@ public class BarChart extends Chart {
             currentY = baseY - chartHeight * (row.getFloat(" Number") / dataMax);
             float centerX = currentX;
             float centerY = baseY - ((baseY - currentY) / 2);
-            BarChartButton b = new BarChartButton(centerX, centerY, colSpace, baseY - currentY, currentY, row.getString("Name") + " " + row.getString(" Number"));
+            BarChartButton b = new BarChartButton(centerX, centerY, colSpace, baseY - currentY, currentY, row.getString("Name") + "\n" + row.getString(" Number"));
             dataPoints.add(b);
 
 
@@ -37,13 +37,16 @@ public class BarChart extends Chart {
             
             if (bu.intersectsWith(mouseX, mouseY)) {
                 bu.setColor(color(0, 215, 245));
+                bu.display();
                 fill(0);
                 textAlign(CENTER);
-                textSize(10);
-                text(bu.getText(), bu.getX(), bu.getTop() - 15);
-            }
-                bu.display();
+                textSize(12);
+                text(bu.getText(), bu.getX(), bu.getY());
                 bu.setColor(100);
+            } else {
+                bu.display();
+            }
+                
 
         }
 
